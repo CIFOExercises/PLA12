@@ -212,3 +212,18 @@ select {
 #pagination {
     color: #0000ff;
 }
+
+/** MANTENIMIENTO ESCUELAS **/
+
+#mantenimiento-escuelas section{
+    width: 50%;
+}
+
+#mantenimiento-escuelas .section-body{
+    display: flex;
+    justify-content: center;
+}
+
+#mantenimiento-escuelas .section-footer{
+    justify-content: flex-end;
+}

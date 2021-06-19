@@ -10,7 +10,7 @@
     <link href="css/style.css" rel="stylesheet">
 </head>
 
-<body>
+<body id="mantenimiento-escuelas">
     <header>
 
     </header>
@@ -21,7 +21,7 @@
                 <h2>Manteniment Escoles</h2>
             </div>
             <div class="section-body">
-                <table border="1">
+                <table class="centersTable">
                     <thead>
                         <tr>
                             <th>Id</th>
@@ -32,16 +32,16 @@
                         <tr>
                             <td></td>
                             <td>
-                                <input type="text">
+                                <input type="text" id="centerName">
                             </td>
                             <td>
-                                <button>Afegir</button>
+                                <button id="addCenter">Afegir</button>
                             </td>
                             <td></td>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr class="centersTable-item">
                             <td>60</td>
                             <td>
                                 <input type="text" value="Bon Pastor">
@@ -61,7 +61,7 @@
             </div>
         </section>
     </main>
-    <script src="js/mantenimiento-escuelas.js"></script>
+    <script type="module" src="js/mantenimiento-escuelas.js"></script>
 </body>
 
 </html>
