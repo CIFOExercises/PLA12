@@ -1,7 +1,10 @@
 import { ajaxRequest } from "./ajax.js";
+import { refreshCentersTable } from "./refreshCentersTable.js";
 
 export function addCenter() {
-    let centerName = document.querySelector('#centerName').value
+    const centerNameinput = document.querySelector('#centerName')
+
+    let centerName =  centerNameinput.value.trim()
 
     if (!centerName) { 
         alert('No hay ningun centro escrito')
@@ -9,15 +12,17 @@ export function addCenter() {
     }
 
     let data = {
-        nombre: centerName.trim()
+        nombre: centerName
     }
 
     ajaxRequest('https://alcyon-it.com/PQTM/pqtm_alta_colegios.php', 'POST', data, 'text')
     .then(res => {
-        if(res.substr(3) !== "00") throw res
+        if(res.substring(0,2) !== "00") throw res
         alert(res.substring(3))
 
-        //refreshCentersTable()
+        refreshCentersTable()
+
+        centerNameinput.value = ''
     })
     .catch(error => alert(error))
 }

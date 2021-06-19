@@ -227,3 +227,28 @@ select {
 #mantenimiento-escuelas .section-footer{
     justify-content: flex-end;
 }
+
+#mantenimiento-escuelas input{
+    height: 40px;
+}
+
+#addCenter, .modifyCenter, .deleteCenter{
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#mantenimiento-escuelas #addCenter{
+    background-color: #4caf50;
+    color: white;
+}
+
+#mantenimiento-escuelas .modifyCenter{
+    background-color: #0000ff;
+    color: white;
+}
+
+#mantenimiento-escuelas .deleteCenter{
+    background-color: red;
+    color: white;
+}

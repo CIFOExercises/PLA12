@@ -1,6 +1,8 @@
 export async function ajaxRequest(endpoint, method, data = {}, responseType = "text") {
-    if (!data) {
-        let datos = new FormData()
+    let datos;
+    
+    if (data != '') {
+        datos = new FormData()
 
         for (let prop in data) {
             datos.append(prop, data[prop])

@@ -1,18 +1,17 @@
+import { ajaxRequest } from "./ajax.js";
 import { getAllCenters } from "./getAllCenters.js";
 
 export async function refreshCentersTable() {
     let centros = await getAllCenters()
-    console.log(centros)
     appendTable(centros)
 }
 
 function appendTable(centros) {
-    console.log(centros)
-    document.querySelector(".centersTable").innerHTML = "";
+    document.querySelector(".centersTable tbody").innerHTML = ''
     for (const item of centros) {
-        document.querySelector(".centersTable").innerHTML += `
+        document.querySelector(".centersTable tbody").innerHTML += `
             <tr class="centersTable-item">
-                <td>${item.idcolegio}</td>
+                <td class="idcolegio">${item.idcolegio}</td>
                 <td>
                     <input type="text" value="${item.nombre}">
                 </td>
@@ -37,9 +36,37 @@ function appendTable(centros) {
 }
 
 function modifyCenter() {
-    console.log(this)
-};
+    let idcolegio = this.closest('tr').children[0].textContent
+    let nombre = this.closest('tr').children[1].children[0].value.trim()
+
+    let data = {
+        idcolegio,
+        nombre
+    }
+
+    ajaxRequest('https://alcyon-it.com/PQTM/pqtm_modificacion_colegios.php', 'POST', data)
+    .then(res => {
+        if(res.substring(0,2) !== "00") throw res
+        alert(res.substring(3))
+
+        refreshCentersTable()
+    })
+    .catch(error => alert(error))
+}
 
 function deleteCenter() {
-    console.log(this)
+    let idcolegio = this.closest('tr').children[0].textContent
+
+    let data ={
+        idcolegio
+    }
+
+    ajaxRequest('https://alcyon-it.com/PQTM/pqtm_baja_colegios.php', 'POST', data)
+    .then(res => {
+        if(res.substring(0,2) !== "00") throw res
+        alert(res.substring(3))
+
+        refreshCentersTable()
+    })
+    .catch(error => alert(error))
 }
